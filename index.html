@@ -7,6 +7,7 @@
   <title>Document</title>
 </head>
 <body style="background-color: black;">
+  <h1 style="color: aliceblue;">왼손 오른손으로 👍 👎 제스처를 취해보세요</h1>
   <div class="container">
     <div class="canvas-wrapper">
       <canvas id="output"></canvas>
@@ -160,12 +161,17 @@
         if (hand.keypoints != null) {
           this.drawKeypoints(hand.keypoints, hand.handedness);
           const hand_type = this.drawEmoticon(hand.keypoints)
-
-          if (hand_type == 'up') {
-            emo.innerHTML = '<figure contenteditable="false" data-ke-type="emoticon" data-ke-align="alignCenter" data-emoticon-type="friends1" data-emoticon-name="032" data-emoticon-isanimation="false" data-emoticon-src="https://t1.daumcdn.net/keditor/emoticon/friends1/large/032.gif"><img src="https://t1.daumcdn.net/keditor/emoticon/friends1/large/032.gif" width="150" /></figure>';
+          if (hand.handedness == 'Left' && hand_type == 'up') {
+            emo.innerHTML = '<h3 style="color:aliceblue">오른손 👍</h3>'
           }
-          else if (hand_type == 'down') {
-            emo.innerHTML = '<figure contenteditable="false" data-ke-type="emoticon" data-ke-align="alignCenter" data-emoticon-type="niniz" data-emoticon-name="029" data-emoticon-isanimation="false" data-emoticon-src="https://t1.daumcdn.net/keditor/emoticon/niniz/large/029.gif"><img src="https://t1.daumcdn.net/keditor/emoticon/niniz/large/029.gif" width="150" /></figure>'
+          else if (hand.handedness == 'Left' && hand_type == 'down') {
+            emo.innerHTML = '<h3 style="color:aliceblue">오른손 👎</h3>'
+          }
+          else if (hand.handedness == 'Right' && hand_type == 'up') {
+            emo.innerHTML = '<h3 style="color:aliceblue">왼손 👍</h3>'
+          }
+          else if (hand.handedness == 'Right' && hand_type == 'down') {
+            emo.innerHTML = '<h3 style="color:aliceblue">왼손 👎</h3>'
           }
           else {
             emo.innerHTML = '<p></p>'
